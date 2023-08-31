@@ -9,6 +9,14 @@ public class Drill : MonoBehaviour
     public int sellPrice;
     public PlayerStats player;
 
+     void Awake()
+    {
+        // ADD: Fix rotation of machine for when rotating with "r".
+        transform.eulerAngles = new Vector3(-180, -25.7290f, 0f);
+        //transform.Rotate(-84.319f, 0f, 90f);
+
+    }
+
     void Start()
     {
         player = FindObjectOfType<PlayerStats>();

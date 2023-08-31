@@ -29,9 +29,9 @@ public class TycoonSelect : MonoBehaviour
         {
             stats.PlayerMoney -= 75;
             build.tycoonPurchased = true;
-            build.SpawnBuilding(0);
+            build.SpawnBuilding(0, 0f, 0f, 0f); // Building type and spawning offset
+          //  StartCoroutine(Spawn(0));
         }
-
     }
 
     public void BuyBallDropper()
@@ -40,7 +40,9 @@ public class TycoonSelect : MonoBehaviour
         {
             stats.PlayerMoney -= 100;
             build.tycoonPurchased = true;
-            build.SpawnBuilding(1);
+           // build.SpawnBuilding(1,-84.319f, 0f, 90f);
+            build.SpawnBuilding(1, 0f, 0.4f, 0f); // Building type and spawning offset
+        //    StartCoroutine(Spawn(1));
         }
     }
 
@@ -50,21 +52,30 @@ public class TycoonSelect : MonoBehaviour
         {
             stats.PlayerMoney -= 150;
             build.tycoonPurchased = true;
-            build.SpawnBuilding(2);
+           // build.SpawnBuilding(2, -180f, -25.729f, 0f);
+           build.SpawnBuilding(2, 0f, 1.5f, 0f); // Building type and spawning offset
+         //   StartCoroutine(Spawn(2));
         }
 
     }
 
 
-    public void IncreaseLandSize() // Maybe move to a different script?
+    public void BuyCubicConveyor() // Maybe move to a different script?
     {
-        if (stats.PlayerMoney >= landUpgrade)
+        if (stats.PlayerMoney >= 250)
         {
-            stats.PlayerMoney -= landUpgrade;
-            landUpgrade = landUpgrade * 4;
-            land.transform.localScale += new Vector3(1f, 1f, 1f);
-            landCostText.text = "Increase Land: $" + landUpgrade.ToString();
+            stats.PlayerMoney -= 250;
+            build.tycoonPurchased = true;
+            build.SpawnBuilding(3, 0f, .9f, 0f); // Building type and spawning offset
         }
+    }
+
+
+    IEnumerator Spawn(int num)
+    {
+        yield return new WaitForSeconds(.5f);
+        //build.SpawnBuilding(num);
+
     }
 
 }

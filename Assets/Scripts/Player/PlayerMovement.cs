@@ -24,12 +24,15 @@ public class PlayerMovement : MonoBehaviour
     //private bool hasStamina = true;
 
     public Camera ArcadeCamera;
+    public GameObject BuildMenu;
+    private bool buildActive = false;
 
    
    
 
     void Start()
     {
+        BuildMenu.SetActive(false);
         ArcadeCamera.enabled = false;
         controller = gameObject.GetComponent<CharacterController>();
         holdSpeed = speed; 
@@ -68,6 +71,18 @@ public class PlayerMovement : MonoBehaviour
             isRunning = false;
             // StartCoroutine(Stamina());
         }
+
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            buildActive = !buildActive;
+            BuildMenu.SetActive(buildActive);
+        }
+
+
+
+
+
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);

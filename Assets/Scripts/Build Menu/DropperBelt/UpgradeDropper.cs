@@ -17,6 +17,15 @@ public class UpgradeDropper : MonoBehaviour
     public TycoonManager manage;
     public TMP_Text upgradeText;
 
+    void Awake()
+    {
+        // ADD: Fix rotation of machine for when rotating with "r".
+        transform.eulerAngles = new Vector3(-84.319f, 0f, 90f);
+        //transform.Rotate(-84.319f, 0f, 90f);
+
+    }
+
+
     void Start()
     {
         stats = FindObjectOfType<PlayerStats>();

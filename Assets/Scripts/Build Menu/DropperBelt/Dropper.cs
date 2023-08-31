@@ -8,6 +8,7 @@ public class Dropper : MonoBehaviour
     [SerializeField] private GameObject ball;
     public bool canSpawn;
     public float speed;
+
     // Update is called once per frame
     void Update()
     {
